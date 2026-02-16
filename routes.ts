@@ -11,6 +11,18 @@ interface JiraCreateIssueResponse {
   self: string;
 }
 
+interface JiraIssueResponse {
+  id: string;
+  key: string;
+  fields: {
+    summary: string;
+    description?: any;
+    issuetype: {
+      name: string;
+    };
+  };
+}
+
 
 /* ===============================
    ENV CONFIG
@@ -25,6 +37,47 @@ if (!JIRA_BASE || !JIRA_EMAIL || !JIRA_TOKEN) {
 }
 
 const auth = Buffer.from(`${JIRA_EMAIL}:${JIRA_TOKEN}`).toString("base64");
+
+
+/* ===============================
+   FETCH ISSUE DETAILS
+================================ */
+
+router.get("/issue/:issueKey", authMiddleware, async (req, res) => {
+  try {
+    const { issueKey } = req.params;
+
+    if (!issueKey) {
+      return res.status(400).json({ error: "Missing issue key" });
+    }
+
+    const response = await axios.get<JiraIssueResponse>(
+      `${JIRA_BASE}/rest/api/3/issue/${issueKey}`,
+      {
+        headers: {
+          Authorization: `Basic ${auth}`,
+          Accept: "application/json"
+        }
+      }
+    );
+
+    const issue = response.data;
+
+    res.json({
+      key: issue.key,
+      id: issue.id,
+      type: issue.fields.issuetype.name,
+      title: issue.fields.summary,
+      description: issue.fields.description?.content?.[0]?.content?.[0]?.text || ""
+    });
+
+  } catch (err: any) {
+    console.error("Fetch issue error:", err.response?.data || err.message);
+    res.status(500).json({ error: "Failed to fetch issue" });
+  }
+});
+
+
 
 /* ===============================
    ANALYZE (AI GENERATION)
@@ -222,10 +275,10 @@ Title: ${title}
 `;
 
     case "criteria":
-      return `Generate acceptance criteria for Jira Story: ${title}`;
+      return `Generate acceptance criteria for Jira Story: ${title} in points without heading`;
 
     case "description":
-      return `Write a professional Jira description for ${type}: ${title}`;
+      return `Write a professional Jira description only for ${type}: ${title} without description heading`;
 
     case "bug":
       return `Summarize this Jira bug clearly: ${desc}`;
