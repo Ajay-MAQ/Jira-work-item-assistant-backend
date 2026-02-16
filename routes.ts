@@ -327,7 +327,7 @@ Title: ${title}
       return `Generate acceptance criteria for Jira Story: ${title}`;
 
     case "description":
-      return `Write a professional Jira description for ${type}: ${title} along with Acceptance Criteria in bullet points.`;
+      return `Write a professional Jira description for ${type}: ${title} along with Acceptance Criteria in bullet points. output format should be title followed by description and acceptance criteria.`;
 
     case "bug":
       return `Summarize this Jira bug clearly: ${desc}`;
