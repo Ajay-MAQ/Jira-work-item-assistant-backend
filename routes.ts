@@ -230,6 +230,55 @@ router.post("/create-testcases", authMiddleware, async (req, res) => {
   }
 });
 
+
+/* ===============================
+   UPDATE DESCRIPTION
+================================ */
+
+router.post("/update-description", async (req, res) => {
+  try {
+    const { issueKey, description } = req.body;
+
+    if (!issueKey || !description) {
+      return res.status(400).json({ error: "Invalid payload" });
+    }
+
+    await axios.put(
+      `${JIRA_BASE}/rest/api/3/issue/${issueKey}`,
+      {
+        fields: {
+          description: {
+            type: "doc",
+            version: 1,
+            content: [
+              {
+                type: "paragraph",
+                content: [{ type: "text", text: description }]
+              }
+            ]
+          }
+        }
+      },
+      {
+        headers: {
+          Authorization: `Basic ${auth}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Update description error:", err);
+    res.status(500).json({ error: "Update failed" });
+  }
+});
+
+
+
+
+
 /* ===============================
    PROMPT BUILDER
 ================================ */
@@ -275,10 +324,10 @@ Title: ${title}
 `;
 
     case "criteria":
-      return `Generate acceptance criteria for Jira Story: ${title} in points without heading`;
+      return `Generate acceptance criteria for Jira Story: ${title}`;
 
     case "description":
-      return `Write a professional Jira description only for ${type}: ${title} without description heading`;
+      return `Write a professional Jira description for ${type}: ${title} along with Acceptance Criteria in bullet points.`;
 
     case "bug":
       return `Summarize this Jira bug clearly: ${desc}`;
