@@ -339,12 +339,14 @@ You MUST strictly follow the structure and rules below.
 # SER STORY FORMAT (MANDATORY) 
 User Story must strictly follow this format:
 
-### Description:
+### Description: 
+\n
     As a **<user persona>**,
     **I want** <goal / capability>,
     **So that** <business value / benefit>.
-
-### Acceptance Criteria:
+\n\n
+### Acceptance Criteria: 
+\n
     Guidelines for Acceptance Criteria:
     1. Ensure that each criterion is testable and measurable.
     2. Write criteria in the context of the user persona described in the problem.
