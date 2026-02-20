@@ -384,14 +384,14 @@ Example Input:
   Issue Type: Story
 Example Output:
   Description:
-  \n
+
   As a <strong>Developer</strong>,
   <strong>I want</strong> to finalize the output JSON schema for Loan and Real Estate agents after FAB-driven extraction,
   <strong>So that</strong> the Spec Kit prompt lifecycle executes as a single cohesive flow and the system produces consistent, deterministic outputs with reliable document handling.
-\n
-\n
+  
+
   Acceptance Criteria:
-  \n
+  
   Scenario 1: Output JSON schema is finalized and enforced
       Given the FAB agent completes execution and extraction is successful
       When the agent produces its final response
