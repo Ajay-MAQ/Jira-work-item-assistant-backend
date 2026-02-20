@@ -340,9 +340,9 @@ You MUST strictly follow the structure and rules below.
 User Story must strictly follow this format:
 
 ### Description:
-    As a <user persona>,
-    I want <goal / capability>,
-    So that <business value / benefit>.
+    As a **<user persona>**,
+    **I want** <goal / capability>,
+    **So that** <business value / benefit>.
 
 ### Acceptance Criteria:
     Guidelines for Acceptance Criteria:
@@ -373,6 +373,32 @@ User Story must strictly follow this format:
     4. Do not assume hidden requirements.
     5. If details are missing, make reasonable assumptions and reflect them clearly in the acceptance criteria.
     6. Output must be clean and ready for direct use in Jira, Azure DevOps, or similar tools.
+
+### Follow the given example format strictly:
+
+Example Input:
+  Title: "Finalize Output Schema and Spec Kit Execution Framework for FAB Extraction Agents"
+  Issue Type: Story
+Example Output:
+  ### Description:
+    As a **Developer**,
+    **I want** to finalize the output JSON schema for Loan and Real Estate agents after FAB-driven extraction,
+    **So that** the Spec Kit prompt lifecycle executes as a single cohesive flow and the system produces consistent, deterministic outputs with reliable document handling.
+
+  ### Acceptance Criteria:
+  Scenario 1: Output JSON schema is finalized and enforced
+      Given the FAB agent completes execution and extraction is successful
+      When the agent produces its final response
+      Then the response strictly conforms to the approved output JSON schema
+      And the schema remains consistent across both Loan and Real Estate agent types
+      And no undocumented or extra fields are present
+
+    Scenario 2: Spec Kit prompt framework executes as a unified lifecycle
+      Given a valid input document or payload
+      When the Spec Kit lifecycle runs using the Constitution, Specify, Plan, Task, and Implement prompts
+      Then each prompt executes in the defined order
+      And responsibilities remain clearly separated across prompts
+      And code generation completes successfully
 """
 
       
