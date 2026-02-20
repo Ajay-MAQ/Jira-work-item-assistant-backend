@@ -340,42 +340,41 @@ You MUST strictly follow the structure and rules below.
 User Story must strictly follow this format:
 
 Description: 
-\n
-    As a **<user persona>**,
-    **I want** <goal / capability>,
-    **So that** <business value / benefit>.
-\n
-\n
+
+  As a **<user persona>**,
+  **I want** <goal / capability>,
+  **So that** <business value / benefit>.
+
+
 Acceptance Criteria: 
-\n
-    Guidelines for Acceptance Criteria:
-    1. Ensure that each criterion is testable and measurable.
-    2. Write criteria in the context of the user persona described in the problem.
-    3. You MUST use EITHER:
-        - Gherkin syntax (Given, When, Then) format for behavioral scenarios, OR
-        - Clear, concise bullet points for testable outcomes.
-    4. DO NOT use both Gherkin and bullet points together.
-    5. Avoid generic statements such as:
-        - Ensure TAD and TS are adhered
-        - Delivered solution does not generate additional issues on servers and browser
-    6. Additional Gherkin scenarios for other user personas can be listed separately if necessary.
+  Guidelines for Acceptance Criteria:
+  1. Ensure that each criterion is testable and measurable.
+  2. Write criteria in the context of the user persona described in the problem.
+  3. You MUST use EITHER:
+      - Gherkin syntax (Given, When, Then) format for behavioral scenarios, OR
+      - Clear, concise bullet points for testable outcomes.
+  4. DO NOT use both Gherkin and bullet points together.
+  5. Avoid generic statements such as:
+      - Ensure TAD and TS are adhered
+      - Delivered solution does not generate additional issues on servers and browser
+  6. Additional Gherkin scenarios for other user personas can be listed separately if necessary.
 
 
 ### IMPORTANT INSTRUCTIONS:
-    1. Expand the context clearly and professionally.
-    2. Provide sufficient functional clarity for engineering implementation.
-    3. Include constraints, scope boundaries, and relevant business context.
-    4. Keep it structured and concise.
-    5. Do NOT include acceptance criteria inside the description.
-    6. Do NOT include implementation-level technical steps unless explicitly required.
+  1. Expand the context clearly and professionally.
+  2. Provide sufficient functional clarity for engineering implementation.
+  3. Include constraints, scope boundaries, and relevant business context.
+  4. Keep it structured and concise.
+  5. Do NOT include acceptance criteria inside the description.
+  6. Do NOT include implementation-level technical steps unless explicitly required.
 
 ### QUALITY CONSTRAINTS:
-    1. The story must be small enough to fit within a single sprint of 10 days (2 work weeks).
-    2. Acceptance criteria must remove ambiguity.
-    3. Avoid vague terms such as fast, user-friendly, optimized, etc.
-    4. Do not assume hidden requirements.
-    5. If details are missing, make reasonable assumptions and reflect them clearly in the acceptance criteria.
-    6. Output must be clean and ready for direct use in Jira, Azure DevOps, or similar tools.
+  1. The story must be small enough to fit within a single sprint of 10 days (2 work weeks).
+  2. Acceptance criteria must remove ambiguity.
+  3. Avoid vague terms such as fast, user-friendly, optimized, etc.
+  4. Do not assume hidden requirements.
+  5. If details are missing, make reasonable assumptions and reflect them clearly in the acceptance criteria.
+  6. Output must be clean and ready for direct use in Jira, Azure DevOps, or similar tools.
 
 ### Follow the given example format strictly:
 
@@ -391,8 +390,8 @@ Example Output:
   
 
   Acceptance Criteria:
-  
-  Scenario 1: Output JSON schema is finalized and enforced
+
+    Scenario 1: Output JSON schema is finalized and enforced
       Given the FAB agent completes execution and extraction is successful
       When the agent produces its final response
       Then the response strictly conforms to the approved output JSON schema
