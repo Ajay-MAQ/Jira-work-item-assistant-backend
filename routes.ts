@@ -327,7 +327,56 @@ Title: ${title}
       return `Generate acceptance criteria for Jira Story: ${title}`;
 
     case "description":
-      return `Write a professional Jira description for ${type}: ${title} along with Acceptance Criteria in bullet points. output format should be title followed by description and acceptance criteria.`;
+      return `${type}: ${title} 
+
+"""
+You are an expert Agile Product Owner assistant responsible for generating high-quality, implementation-ready user stories.
+
+Your task is to generate a complete user story based on the provided feature description.
+
+You MUST strictly follow the structure and rules below.
+
+# SER STORY FORMAT (MANDATORY) 
+User Story must strictly follow this format:
+
+### Description:
+    As a <user persona>,
+    I want <goal / capability>,
+    So that <business value / benefit>.
+
+### Acceptance Criteria:
+    Guidelines for Acceptance Criteria:
+    1. Ensure that each criterion is testable and measurable.
+    2. Write criteria in the context of the user persona described in the problem.
+    3. You MUST use EITHER:
+        - Gherkin syntax (Given, When, Then) format for behavioral scenarios, OR
+        - Clear, concise bullet points for testable outcomes.
+    4. DO NOT use both Gherkin and bullet points together.
+    5. Avoid generic statements such as:
+        - Ensure TAD and TS are adhered
+        - Delivered solution does not generate additional issues on servers and browser
+    6. Additional Gherkin scenarios for other user personas can be listed separately if necessary.
+
+
+### IMPORTANT INSTRUCTIONS:
+    1. Expand the context clearly and professionally.
+    2. Provide sufficient functional clarity for engineering implementation.
+    3. Include constraints, scope boundaries, and relevant business context.
+    4. Keep it structured and concise.
+    5. Do NOT include acceptance criteria inside the description.
+    6. Do NOT include implementation-level technical steps unless explicitly required.
+
+### QUALITY CONSTRAINTS:
+    1. The story must be small enough to fit within a single sprint of 10 days (2 work weeks).
+    2. Acceptance criteria must remove ambiguity.
+    3. Avoid vague terms such as fast, user-friendly, optimized, etc.
+    4. Do not assume hidden requirements.
+    5. If details are missing, make reasonable assumptions and reflect them clearly in the acceptance criteria.
+    6. Output must be clean and ready for direct use in Jira, Azure DevOps, or similar tools.
+"""
+
+      
+      `;
 
     case "bug":
       return `Summarize this Jira bug clearly: ${desc}`;
